@@ -156,10 +156,10 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
           <ProjectCard
-            title="Расписание РТУ МИРЭА"
+            title="Алиса Расписание МИРЭА"
             description="Навык для Яндекс Алисы. Позволяет получить расписание группы на сегодня, завтра или на любой день недели"
             link="https://dialogs.yandex.ru/store/skills/fdd92935-raspisanie-rtu-mirea"
-            icon={randomAvatar("Алиса", "f72585")}
+            icon={randomAvatar("Алиса Расписание", "f72585")}
           />
         </div>
       </main>

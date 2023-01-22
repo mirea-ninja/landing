@@ -8,6 +8,9 @@ const nextConfig = {
         hostname: "ui-avatars.com",
       },
     ],
+
+    // disable optimization for Next SSG
+    unoptimized: true, 
   },
 }
 
