@@ -1,44 +1,6 @@
 import Layout from "@/components/layout";
 import ProjectGrid, {ProjectGridProps} from "@/components/project-grid";
 
-
-const randomAvatar = (title: string, clr?: string) => {
-    const colors = [
-        "f72585",
-        "b5179e",
-        "7209b7",
-        "560bad",
-        "480ca8",
-        "3a0ca3",
-        "3f37c9",
-        "4361ee",
-        "4895ef",
-        "4cc9f0",
-        "a5f3fc",
-        "fdeff9",
-        "f9c80e",
-        "f3722c",
-        "f94144",
-        "f8961e",
-        "f9844a",
-        "f9c74f",
-        "90be6d",
-        "43aa8b",
-        "4d908e",
-        "577590",
-        "277da1",
-    ]
-    const color = colors[Math.floor(Math.random() * colors.length)]
-    const letters = title.split(" ")
-    const firstLetter = letters[0][0]
-    const secondLetter = letters[1] ? letters[1][0] : ""
-
-    if (clr) {
-        return `https://ui-avatars.com/api/?name=${firstLetter.toUpperCase()}${secondLetter.toUpperCase()}&background=${clr}&color=fff&size=128`
-    }
-    return `https://ui-avatars.com/api/?name=${firstLetter.toUpperCase()}${secondLetter.toUpperCase()}&background=${color}&color=fff&size=128`
-}
-
 const projects: ProjectGridProps[] = [
     {
         title: "Чат-боты",
@@ -79,17 +41,17 @@ const projects: ProjectGridProps[] = [
             title: "API Расписания МИРЭА",
             description: "API для получения расписания группы, поиска расписания преподавателей",
             link: "https://schedule.mirea.ninja/docs",
-            icon: randomAvatar("API", "f3722c")
+            backgroundColor: "bg-orange-500",
         }, {
             title: "API Расписания V2",
             description: "API расписания v2. Методы для работы с расписанием аудиторий. Используется в ЛКС и на информационных экранах у аудиторий",
             link: "https://timetable.mirea.ru/docs",
-            icon: randomAvatar("API", "43aa8b")
+            backgroundColor: "bg-lime-500"
         }, {
             title: "LKS User API",
             description: "Сервис авторизации и защищенный API для работы с пользовательскими данными",
             link: "https://lks.mirea.ninja/login",
-            icon: randomAvatar("API", "4895ef")
+            backgroundColor: "bg-sky-500"
         }]
     }, {
         title: "Мобильные приложения",
@@ -105,7 +67,7 @@ const projects: ProjectGridProps[] = [
             title: "Алиса Расписание МИРЭА",
             description: "Навык для Яндекс Алисы. Позволяет получить расписание группы на сегодня, завтра или на любой день недели",
             link: "https://dialogs.yandex.ru/store/skills/fdd92935-raspisanie-rtu-mirea",
-            icon: randomAvatar("Алиса Расписание", "f72585")
+            backgroundColor: "bg-pink-500"
         }]
     }
 ]
