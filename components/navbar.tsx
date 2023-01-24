@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Navbar() {
     return (
-        <div className="navbar bg-base-100 shadow-xl rounded-lg">
+        <div className="navbar bg-base-200 shadow-md rounded-lg">
             <div className="flex-1">
                 <Link href="/" className="btn btn-ghost hower:btn-gost normal-case text-xl">Mirea Ninja</Link>
             </div>

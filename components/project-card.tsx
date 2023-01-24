@@ -29,19 +29,22 @@ export interface ProjectCardProps {
 export default function ProjectCard(props: ProjectCardProps) {
     return (
         <Link href={props.link}
-              className="rounded-2xl p-4 ring-1 ring-gray-200 ring-inset hover:ring-2 hover:ring-blue-100 transition-all duration-200 cursor-pointer min-h-[240px]">
-            <div className="avatar mb-4">
-                {props.icon !== undefined ?
-                    <div className={avatarClass}>
-                        <Image
-                            src={props.icon}
-                            width={64}
-                            height={64}
-                            alt={`Логотип проекта ${props.title}`}
-                        /></div> : placeholderAvatar(props.title, props.backgroundColor)}
+              className="card card-bordered p-4 ring-1 ring-primary ring-inset hover:ring-2 hover:ring-primary-focus transition-all duration-200 cursor-pointer min-h-[240px]">
+            <div className="card-body primary-content">
+                <div className="avatar mb-4">
+                    {props.icon !== undefined ?
+                        <div className={avatarClass}>
+                            <Image
+                                src={props.icon}
+                                width={64}
+                                height={64}
+                                alt={`Логотип проекта ${props.title}`}
+                            />
+                        </div> : placeholderAvatar(props.title, props.backgroundColor)}
+                </div>
+                <h3 className="text-sm font-bold mb-2">{props.title}</h3>
+                <p className="text-sm text-gray-500">{props.description}</p>
             </div>
-            <h3 className="text-sm font-bold mb-2">{props.title}</h3>
-            <p className="text-sm text-gray-500">{props.description}</p>
         </Link>
     )
 }
