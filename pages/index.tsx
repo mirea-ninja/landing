@@ -1,5 +1,6 @@
 import Layout from "@/components/layout";
 import ProjectGrid, {ProjectGridProps} from "@/components/project-grid";
+import React from "react";
 
 const projects: ProjectGridProps[] = [
     {
@@ -11,7 +12,7 @@ const projects: ProjectGridProps[] = [
             icon: "/ninja_bot.jpg"
         }, {
             title: "Mirea Ninja Executor Bot",
-            description: "Бот для создания, сохранение и исполнение Python кода прямо в чате. Имеется поддержка библиотек, в том числе сетевых. Выполняется в изолированном окружении",
+            description: "Бот для создания, сохранения и исполнения Python кода прямо в чате. Имеется поддержка библиотек, в том числе сетевых. Выполняется в изолированном окружении",
             link: "https://t.me/mireaninja_executor_bot",
             icon: "/executor_bot.jpg"
         }, {
@@ -26,7 +27,7 @@ const projects: ProjectGridProps[] = [
             icon: "/search-students-logo.png"
         }, {
             title: "Траектория обучения РТУ МИРЭА",
-            description: "Бот позволяет получать траекторию обучения из по коду направления, названию профиля или названию направления. Выводи по семестрам и годам поступления",
+            description: "Бот позволяет получать траекторию обучения по коду направления, названию профиля или названию направления по семестрам и годам поступления",
             link: "https://t.me/learning_roadmap_bot",
             icon: "/trajectory.jpg"
         }]
@@ -55,8 +56,10 @@ const projects: ProjectGridProps[] = [
         projects: [{
             title: "Ninja Mirea App",
             description: "Приложение для просмотра расписания группы, просмотра новостей, карты. Имеется интеграция с профилем студента",
-            link: "https://play.google.com/store/apps/details?id=ru.mirea.ninja",
-            icon: "/mobile.png"
+            icon: "/mobile.png",
+            appStoreLink: "https://apps.apple.com/ru/app/ninja-mirea/id1582508025",
+            googlePlayLink: "https://play.google.com/store/apps/details?id=ru.mirea.ninja",
+            badges: [{ text: "Новый релиз", className: "badge-primary" }]
         }]
     }, {
         title: "Голосовые помощники",
