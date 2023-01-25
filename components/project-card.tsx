@@ -73,7 +73,7 @@ function ProjectCardBody(props: ProjectCardBodyProps) {
                 </div>
                 <div className="flex flex-col ml-4 items-center">
                     {props.badges?.map((badge, index) => (
-                        <div key={index} className={`badge ${badge.className} self-center m-1`}>{badge.text}</div>
+                        <div key={index} className={`badge ${badge.className} self-center ml-1 mb-1 whitespace-nowrap`}>{badge.text}</div>
                     ))}
                 </div>
             </div>
