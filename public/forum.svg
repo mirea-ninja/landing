@@ -2,6 +2,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 906.19 893.02">
   <defs>
     <style>
+      svg {
+        padding: 1px 1px 1px 1px;
+        scale: 0.9;
+      }
       .cls-1 {
         fill: #737d9b;
       }

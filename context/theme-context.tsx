@@ -1,9 +1,10 @@
 import React from "react";
 
-const defaultTheme = 'light';
+export const darkTheme = 'night';
+export const lightTheme = 'corporate';
 
 export const ThemeContext = React.createContext({
-    theme: defaultTheme,
+    theme: lightTheme,
     toggleTheme: (theme: string) => {
     }
 });
@@ -11,7 +12,7 @@ export const ThemeContext = React.createContext({
 export const useTheme = () => React.useContext(ThemeContext);
 
 export const ThemeProvider = ({children}: any) => {
-    const [theme, setTheme] = React.useState(defaultTheme);
+    const [theme, setTheme] = React.useState(lightTheme);
 
     const toggleTheme = (theme: string) => {
         setTheme(theme);

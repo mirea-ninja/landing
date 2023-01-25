@@ -40,18 +40,15 @@ const projects: ProjectGridProps[] = [
         }, {
             title: "API Расписания МИРЭА",
             description: "API для получения расписания группы, поиска расписания преподавателей",
-            link: "https://schedule.mirea.ninja/docs",
-            backgroundColor: "bg-orange-500",
+            link: "https://schedule.mirea.ninja/docs"
         }, {
             title: "API Расписания V2",
             description: "API расписания v2. Методы для работы с расписанием аудиторий. Используется в ЛКС и на информационных экранах у аудиторий",
-            link: "https://timetable.mirea.ru/docs",
-            backgroundColor: "bg-lime-500"
+            link: "https://timetable.mirea.ru/docs"
         }, {
             title: "LKS User API",
             description: "Сервис авторизации и защищенный API для работы с пользовательскими данными",
-            link: "https://lks.mirea.ninja/login",
-            backgroundColor: "bg-sky-500"
+            link: "https://lks.mirea.ninja/login"
         }]
     }, {
         title: "Мобильные приложения",
@@ -66,8 +63,7 @@ const projects: ProjectGridProps[] = [
         projects: [{
             title: "Алиса Расписание МИРЭА",
             description: "Навык для Яндекс Алисы. Позволяет получить расписание группы на сегодня, завтра или на любой день недели",
-            link: "https://dialogs.yandex.ru/store/skills/fdd92935-raspisanie-rtu-mirea",
-            backgroundColor: "bg-pink-500"
+            link: "https://dialogs.yandex.ru/store/skills/fdd92935-raspisanie-rtu-mirea"
         }]
     }
 ]
