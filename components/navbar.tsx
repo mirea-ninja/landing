@@ -16,13 +16,13 @@ export default function Navbar() {
             <div className="flex-none">
                 <label className="btn btn-square btn-ghost hower:btn-gost swap swap-rotate">
                     <input type="checkbox"
-                           onChange={(event) => toggleTheme(event.currentTarget.checked ? 'dark' : 'light')}/>
-                    <SunIcon className="swap-off fill-current w-6 h-6"/>
-                    <MoonIcon className="swap-on fill-current w-6 h-6"/>
+                           onChange={(event) => toggleTheme(event.currentTarget.checked ? 'night' : 'corporate')}/>
+                    <SunIcon className="swap-off fill-current w-7 h-7"/>
+                    <MoonIcon className="swap-on fill-current w-7 h-7"/>
                 </label>
                 <Link href="https://github.com/mirea-ninja"
                       className="btn btn-square btn-ghost hower:btn-gost">
-                    <Image className="dark:fill-base-300" src="/github-mark.png" width={24} height={24}
+                    <Image className="stroke-white dark:stroke-current" src="/github-mark.svg" width={24} height={24}
                            alt="GitHub Logo"/>
                 </Link>
             </div>
