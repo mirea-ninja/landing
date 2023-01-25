@@ -45,7 +45,7 @@ export interface ProjectCardProps {
 export default function ProjectCard(props: ProjectCardProps) {
     return (
         <Link href={props.link}
-              className="card card-bordered group rounded-xl ring-1 ring-primary hover:ring-2 hover:ring-primary-focus duration-200 cursor-pointer min-h-[240px]">
+              className="card group rounded-xl ring-1 ring-primary hover:ring-2 hover:ring-primary-focus duration-200 cursor-pointer min-h-[240px]">
             <div className="card-body primary-content">
                 <div className="avatar mb-4">
                     {props.icon !== undefined ?
