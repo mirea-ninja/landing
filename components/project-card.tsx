@@ -2,21 +2,38 @@ import Link from "next/link";
 import Image from "next/image";
 
 
-const avatarClass = "w-16 h-16 rounded-xl ring-1 group-hover:ring-2 duration-200 ring-secondary"
+const avatarClassSize = "w-16 h-16"
+const avatarClass = `${avatarClassSize} rounded-xl ring-1 group-hover:ring-2 duration-200 ring-secondary`
 
-function placeholderAvatar(title: string) {
-    const letters = title.split(" ")
+
+function PlaceholderAvatar(props: { title: string }) {
+    const letters = props.title.split(" ")
     const firstLetter = letters[0] ? letters[0][0] : null
     const secondLetter = letters[1] ? letters[1][0] : null
 
     return (
         <div className={`avatar placeholder ${avatarClass}`}>
-            <div className={`text-access-content font-bold bg-accent group-hover:bg-accent-focus`}>
-                <span className="text-xl">{firstLetter}{secondLetter}</span>
+            <div className={`${avatarClassSize} bg-local bg-accent group-hover:bg-accent-focus duration-200`}>
+                <span className="text-xl font-bold text-access-content">{firstLetter}{secondLetter}</span>
             </div>
         </div>
     )
 }
+
+function Avatar(props: { title: string, icon: string }) {
+    return (
+        <div className={avatarClass}>
+            <Image
+                src={props.icon}
+                width={64}
+                height={64}
+                alt={`Логотип проекта ${props.title}`}
+                className="bg-white"
+            />
+        </div>
+    )
+}
+
 
 export interface ProjectCardProps {
     title: string
@@ -32,15 +49,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             <div className="card-body primary-content">
                 <div className="avatar mb-4">
                     {props.icon !== undefined ?
-                        <div className={avatarClass}>
-                            <Image
-                                src={props.icon}
-                                width={64}
-                                height={64}
-                                alt={`Логотип проекта ${props.title}`}
-                                className="bg-white"
-                            />
-                        </div> : placeholderAvatar(props.title)}
+                        <Avatar title={props.title} icon={props.icon}/> : <PlaceholderAvatar title={props.title}/>}
                 </div>
                 <h3 className="text-sm font-bold mb-2">{props.title}</h3>
                 <p className="text-sm text-slate-500 dark:text-slate-400">{props.description}</p>
