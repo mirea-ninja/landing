@@ -2,6 +2,7 @@ import Layout from "@/components/layout";
 import ProjectGrid, {ProjectGridProps} from "@/components/project-grid";
 import React from "react";
 
+
 export async function getStaticProps() {
     // const projects: ProjectGridProps[] = await fetch(`${getBaseUrl()}/api/projects`).then(res => res.json());
     const projects: ProjectGridProps[] = [
