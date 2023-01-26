@@ -1,5 +1,5 @@
-import Layout from "@/components/layout";
-import ProjectGrid, {ProjectGridProps} from "@/components/project-grid";
+import Layout from "@/components/Layout";
+import ProjectGrid, {ProjectGridProps} from "@/components/ProjectGrid";
 import React from "react";
 
 

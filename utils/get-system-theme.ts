@@ -1,4 +1,4 @@
-import {lightTheme, darkTheme} from "@/context/theme-context";
+import {lightTheme, darkTheme} from "@/context/ThemeContext";
 
 export function getSystemTheme() {
     if (typeof window !== 'undefined') {

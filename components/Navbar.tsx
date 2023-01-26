@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React, {useEffect} from "react";
 import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
-import {useTheme} from "@/context/theme-context";
-import {lightTheme, darkTheme} from "@/context/theme-context";
-import GithubMark from "@/components/icons/github-mark";
-import VKLogo from "@/components/icons/vk-logo";
+import {useTheme} from "@/context/ThemeContext";
+import {lightTheme, darkTheme} from "@/context/ThemeContext";
+import GithubMark from "@/components/icons/GithubMark";
+import VKLogo from "@/components/icons/VKLogo";
 
 const iconSize = "w-7 h-7";
 export default function Navbar() {
