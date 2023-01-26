@@ -1,11 +1,21 @@
 import Head from "next/head";
 import Navbar from "@/components/navbar";
+import {useEffect} from "react";
+import * as console from "console";
+import {useTheme} from "@/context/theme-context";
+import {getSystemTheme} from "@/utils/get-system-theme";
 
 interface LayoutProps {
     children: React.ReactNode
 }
 
 export default function Layout(props: LayoutProps) {
+
+    const {toggleTheme} = useTheme();
+
+    useEffect(() => {
+        toggleTheme(getSystemTheme())
+    });
 
     return (
         <>
