@@ -1,10 +1,9 @@
 import Link from "next/link";
-import React, {useEffect} from "react";
-import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
+import React from "react";
 import {useTheme} from "@/context/ThemeContext";
-import {lightTheme, darkTheme} from "@/context/ThemeContext";
 import GithubMark from "@/components/icons/GithubMark";
 import VKLogo from "@/components/icons/VKLogo";
+import ThemeCheckbox from "@/components/ThemeCheckbox";
 
 const iconSize = "w-7 h-7";
 export default function Navbar() {
@@ -17,15 +16,7 @@ export default function Navbar() {
                 <Link href="/" className="btn btn-ghost normal-case text-xl">Mirea Ninja</Link>
             </div>
             <div className="flex-none">
-                <label className="btn btn-square btn-ghost swap swap-rotate">
-                    <input type="checkbox"
-                           onChange={(event) => {
-                               toggleTheme(event.currentTarget.checked ? darkTheme : lightTheme)
-                           }}
-                           defaultChecked={theme === darkTheme}/>
-                    <SunIcon className={`swap-off fill-current ${iconSize}`}/>
-                    <MoonIcon className={`swap-on fill-current ${iconSize}`}/>
-                </label>
+                <ThemeCheckbox iconSize={iconSize}/>
                 <Link href="https://vk.com/mirea.ninja"
                       target="_blank"
                       className="btn btn-square btn-ghost">

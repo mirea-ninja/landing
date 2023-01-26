@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function GithubMark(props: { className?: string }) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96" className={props.className} fill="currentColor">
