@@ -9,7 +9,7 @@ export default function Navbar() {
             </div>
             <div className="flex-none">
                 <Link href="https://github.com/mirea-ninja" className="btn btn-square btn-ghost hower:btn-gost">
-                    <Image src="/github-mark.png" width={24} height={24} alt="GitHub Logo" />
+                    <Image src="static/github-mark.png" width={24} height={24} alt="GitHub Logo" />
                 </Link>
             </div>
         </div>
