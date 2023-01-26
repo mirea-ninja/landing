@@ -1,5 +1,4 @@
 import React from "react";
-import {getSystemTheme} from "@/utils/get-system-theme";
 
 export const darkTheme = 'night';
 export const lightTheme = 'corporate';
@@ -13,7 +12,8 @@ export const ThemeContext = React.createContext({
 export const useTheme = () => React.useContext(ThemeContext);
 
 export const ThemeProvider = ({children}: any) => {
-    const [theme, setTheme] = React.useState(getSystemTheme() === 'night' ? darkTheme : lightTheme);
+
+    const [theme, setTheme] = React.useState(lightTheme);
 
     const toggleTheme = (theme: string) => {
         setTheme(theme);

@@ -10,13 +10,6 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
-
-    const {toggleTheme} = useTheme();
-
-    useEffect(() => {
-        toggleTheme(getSystemTheme())
-    });
-
     return (
         <>
             <Head>

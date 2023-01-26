@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, {useEffect} from "react";
 import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
 import {useTheme} from "@/context/theme-context";
 import {lightTheme, darkTheme} from "@/context/theme-context";
@@ -9,7 +9,7 @@ import VKLogo from "@/components/icons/vk-logo";
 const iconSize = "w-7 h-7";
 export default function Navbar() {
 
-    const {toggleTheme} = useTheme();
+    const {theme, toggleTheme} = useTheme();
 
     return (
         <div className="navbar bg-base-200 shadow-md rounded-md">
@@ -19,7 +19,10 @@ export default function Navbar() {
             <div className="flex-none">
                 <label className="btn btn-square btn-ghost swap swap-rotate">
                     <input type="checkbox"
-                           onChange={(event) => toggleTheme(event.currentTarget.checked ? darkTheme : lightTheme)}/>
+                           onChange={(event) => {
+                               toggleTheme(event.currentTarget.checked ? darkTheme : lightTheme)
+                           }}
+                           defaultChecked={theme === darkTheme}/>
                     <SunIcon className={`swap-off fill-current ${iconSize}`}/>
                     <MoonIcon className={`swap-on fill-current ${iconSize}`}/>
                 </label>
