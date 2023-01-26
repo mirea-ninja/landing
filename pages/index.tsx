@@ -3,7 +3,7 @@ import ProjectGrid, {ProjectGridProps} from "@/components/project-grid";
 import React from "react";
 import * as process from "process";
 
-export async function getStaticProps(context: any) {
+export async function getStaticProps() {
     const projects: ProjectGridProps[] = await fetch(`${process.env.HOST}/api/projects`).then(res => res.json());
     return {
         props: {projects}

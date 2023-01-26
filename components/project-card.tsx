@@ -34,18 +34,20 @@ function Avatar(props: { title: string, icon: string }) {
     )
 }
 
-function AppStoreBadge(props: { link: string }) {
-    return (
-        <Link href={props.link}>
-            <Image src="/market-badges/app-store-badge-ru.svg" alt="Скачать в App Store" width={120} height={40}/>
-        </Link>
-    )
-}
+function StoreBadge(props: { link: string, market: "app-store" | "google-play" }) {
+    let src = ""
+    let alt = ""
+    if (props.market === "app-store") {
+        src = "/market-badges/app-store-badge-ru.svg"
+        alt = "Скачать в App Store"
+    } else if (props.market === "google-play") {
+        src = "/market-badges/google-play-badge-ru.svg"
+        alt = "Скачать Google Play"
+    }
 
-function GooglePlayBadge(props: { link: string }) {
     return (
-        <Link href={props.link}>
-            <Image src="/market-badges/google-play-badge-ru.svg" alt="Скачать Google Play" width={120} height={40}/>
+        <Link href={props.link} target="_blank">
+            <Image src={src} alt={alt} width={120} height={40}/>
         </Link>
     )
 }
@@ -73,16 +75,16 @@ function ProjectCardBody(props: ProjectCardBodyProps) {
                 </div>
                 <div className="flex flex-col ml-4 items-center">
                     {props.badges?.map((badge, index) => (
-                        <div key={index} className={`badge ${badge.className} self-center ml-1 mb-1 whitespace-nowrap`}>{badge.text}</div>
+                        <div key={index}
+                             className={`badge ${badge.className ? badge.className : "badge-primary"} self-center ml-1 mb-1 whitespace-nowrap`}>{badge.text}</div>
                     ))}
                 </div>
             </div>
             <h3 className="text-sm font-bold mb-2">{props.title}</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400">{props.description}</p>
-            {/* Create grid for app store and play market badges */}
             <div className="grid grid-cols-2 gap-1 mt-4 place-items-center">
-                {props.appStoreLink !== undefined && <AppStoreBadge link={props.appStoreLink}/>}
-                {props.googlePlayLink !== undefined && <GooglePlayBadge link={props.googlePlayLink}/>}
+                {props.appStoreLink !== undefined && <StoreBadge market="app-store" link={props.appStoreLink}/>}
+                {props.googlePlayLink !== undefined && <StoreBadge market="google-play" link={props.googlePlayLink}/>}
             </div>
         </div>
     )
@@ -92,7 +94,7 @@ export default function ProjectCard(props: ProjectCardProps) {
     const projectCardClassName = "card group ring-1 ring-primary hover:ring-2 hover:ring-primary-focus duration-200 cursor-pointer min-h-[240px]"
     if (props.link) {
         return (
-            <Link href={props.link} className={projectCardClassName}>
+            <Link href={props.link} target="_blank" className={projectCardClassName}>
                 <ProjectCardBody {...props}/>
             </Link>
         )

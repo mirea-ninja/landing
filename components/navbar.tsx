@@ -3,7 +3,8 @@ import React from "react";
 import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
 import {useTheme} from "@/context/theme-context";
 import {lightTheme, darkTheme} from "@/context/theme-context";
-import GithubMark from "@/components/github-mark";
+import GithubMark from "@/components/icons/github-mark";
+import VKLogo from "@/components/icons/vk-logo";
 
 const iconSize = "w-7 h-7";
 export default function Navbar() {
@@ -22,7 +23,13 @@ export default function Navbar() {
                     <SunIcon className={`swap-off fill-current ${iconSize}`}/>
                     <MoonIcon className={`swap-on fill-current ${iconSize}`}/>
                 </label>
+                <Link href="https://vk.com/mirea.ninja"
+                      target="_blank"
+                      className="btn btn-square btn-ghost">
+                    <VKLogo className={iconSize}/>
+                </Link>
                 <Link href="https://github.com/mirea-ninja"
+                      target="_blank"
                       className="btn btn-square btn-ghost">
                     <GithubMark className={iconSize}/>
                 </Link>
