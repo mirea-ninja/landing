@@ -1,10 +1,10 @@
 import Layout from "@/components/layout";
 import ProjectGrid, {ProjectGridProps} from "@/components/project-grid";
 import React from "react";
-import * as process from "process";
+import {getBaseUrl} from "@/utils/get-base-url";
 
 export async function getStaticProps() {
-    const projects: ProjectGridProps[] = await fetch(`${process.env.HOST}/api/projects`).then(res => res.json());
+    const projects: ProjectGridProps[] = await fetch(`${getBaseUrl()}/api/projects`).then(res => res.json());
     return {
         props: {projects}
     }
