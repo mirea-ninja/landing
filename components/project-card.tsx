@@ -91,7 +91,7 @@ function ProjectCardBody(props: ProjectCardBodyProps) {
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
-    const projectCardClassName = "card group ring-1 ring-primary hover:ring-2 hover:ring-primary-focus duration-200 cursor-pointer min-h-[240px]"
+    const projectCardClassName = "card group ring-1 ring-primary hover:ring-2 hover:ring-primary-focus duration-200 min-h-[240px]"
     if (props.link) {
         return (
             <Link href={props.link} target="_blank" className={projectCardClassName}>
