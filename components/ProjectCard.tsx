@@ -14,7 +14,10 @@ function PlaceholderAvatar(props: { title: string }) {
     return (
         <div className={`avatar placeholder ${avatarClass}`}>
             <div className={`${avatarClassSize} bg-local bg-accent group-hover:bg-accent-focus duration-200`}>
-                <span className="text-xl font-bold text-access-content">{firstLetter}{secondLetter}</span>
+                <span className="text-xl font-bold text-access-content">
+                    {firstLetter?.toUpperCase()}
+                    {secondLetter?.toUpperCase()}
+                </span>
             </div>
         </div>
     )
@@ -55,14 +58,14 @@ function StoreBadge(props: { link: string, market: "app-store" | "google-play" }
 interface ProjectCardBodyProps {
     title: string
     description: string
-    icon?: string
-    googlePlayLink?: string
-    appStoreLink?: string
+    icon: {data:{attributes:{url:string}}} | null
+    googlePlayLink: string | null
+    appStoreLink: string | null
     badges?: { text: string, className: string }[]
 }
 
 export interface ProjectCardProps extends ProjectCardBodyProps {
-    link?: string
+    link: string
 }
 
 function ProjectCardBody(props: ProjectCardBodyProps) {
@@ -70,8 +73,8 @@ function ProjectCardBody(props: ProjectCardBodyProps) {
         <div className="card-body primary-content">
             <div className="flex mb-4">
                 <div className="avatar">
-                    {props.icon !== undefined ?
-                        <Avatar title={props.title} icon={props.icon}/> : <PlaceholderAvatar title={props.title}/>}
+                    {props.icon !== undefined && props.icon !== null && props.icon.data !== null ?
+                        <Avatar title={props.title} icon={props.icon.data.attributes.url}/> : <PlaceholderAvatar title={props.title}/>}
                 </div>
                 <div className="flex flex-col ml-4 items-center">
                     {props.badges?.map((badge, index) => (
@@ -82,19 +85,24 @@ function ProjectCardBody(props: ProjectCardBodyProps) {
             </div>
             <h3 className="text-sm font-bold mb-2">{props.title}</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400">{props.description}</p>
-            <div className="grid grid-cols-2 gap-1 mt-4 place-items-center">
-                {props.appStoreLink !== undefined && <StoreBadge market="app-store" link={props.appStoreLink}/>}
-                {props.googlePlayLink !== undefined && <StoreBadge market="google-play" link={props.googlePlayLink}/>}
-            </div>
+            {(props.googlePlayLink !== null && props.googlePlayLink !== undefined ||
+                props.appStoreLink !== null && props.appStoreLink !== undefined) && (
+                <div className="grid grid-cols-2 gap-1 mt-4 place-items-center">
+                    {props.googlePlayLink !== null && props.googlePlayLink !== undefined &&
+                        <StoreBadge market="google-play" link={props.googlePlayLink}/>}
+                    {props.appStoreLink !== null && props.appStoreLink !== undefined &&
+                        <StoreBadge market="app-store" link={props.appStoreLink}/>}
+                </div>
+            )}
         </div>
     )
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
     const projectCardClassName = "card group ring-1 ring-primary hover:ring-2 hover:ring-primary-focus duration-200 min-h-[240px]"
-    if (props.link) {
+    if (props.link !== null && props.link !== undefined) {
         return (
-            <Link href={props.link} target="_blank" className={projectCardClassName}>
+            <Link href={props.link!} target="_blank" className={projectCardClassName}>
                 <ProjectCardBody {...props}/>
             </Link>
         )
