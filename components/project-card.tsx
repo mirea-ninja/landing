@@ -38,10 +38,10 @@ function StoreBadge(props: { link: string, market: "app-store" | "google-play" }
     let src = ""
     let alt = ""
     if (props.market === "app-store") {
-        src = "/market-badges/app-store-badge-ru.svg"
+        src = "/static/market-badges/app-store-badge-ru.svg"
         alt = "Скачать в App Store"
     } else if (props.market === "google-play") {
-        src = "/market-badges/google-play-badge-ru.svg"
+        src = "/static/market-badges/google-play-badge-ru.svg"
         alt = "Скачать Google Play"
     }
 
