@@ -1,8 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {getSystemTheme} from "@/utils/get-system-theme";
-
-export const darkTheme = 'night';
-export const lightTheme = 'corporate';
+import {lightTheme} from "@/constants/constants";
 
 export const ThemeContext = React.createContext({
     theme: lightTheme,
@@ -15,8 +13,6 @@ export const useTheme = () => React.useContext(ThemeContext);
 export function ThemeProvider({children}: any) {
 
     const [theme, setTheme] = React.useState(getSystemTheme());
-
-    useEffect(() => {toggleTheme(getSystemTheme())}, []);
 
     const toggleTheme = (theme: string) => {
         setTheme(theme);

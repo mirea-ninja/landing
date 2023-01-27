@@ -1,14 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import {useTheme} from "@/context/ThemeContext";
 import GithubMark from "@/components/icons/GithubMark";
 import VKLogo from "@/components/icons/VKLogo";
 import ThemeCheckbox from "@/components/ThemeCheckbox";
+import {GitHubLink, VKLink} from "@/constants/constants";
 
 const iconSize = "w-7 h-7";
 export default function Navbar() {
-
-    const {theme, toggleTheme} = useTheme();
 
     return (
         <div className="navbar bg-base-200 shadow-md rounded-md">
@@ -17,12 +15,12 @@ export default function Navbar() {
             </div>
             <div className="flex-none">
                 <ThemeCheckbox iconSize={iconSize}/>
-                <Link href="https://vk.com/mirea.ninja"
+                <Link href={VKLink}
                       target="_blank"
                       className="btn btn-square btn-ghost">
                     <VKLogo className={iconSize}/>
                 </Link>
-                <Link href="https://github.com/mirea-ninja"
+                <Link href={GitHubLink}
                       target="_blank"
                       className="btn btn-square btn-ghost">
                     <GithubMark className={iconSize}/>
