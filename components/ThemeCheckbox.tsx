@@ -23,7 +23,7 @@ export default function ThemeCheckbox(props: ThemeCheckboxProps) {
 
     useEffect(() => {
         toggleTheme(getSystemTheme())
-    }, [toggleTheme])
+    }, [getSystemTheme])
 
 
     return (
