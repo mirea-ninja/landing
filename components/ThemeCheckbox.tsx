@@ -1,7 +1,7 @@
 import {useTheme} from "@/context/ThemeContext";
 import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
 import React, {useEffect} from "react";
-import {getSystemTheme} from "@/utils/get-system-theme";
+import {getSystemTheme} from "@/utils/getSystemTheme";
 import {darkTheme, lightTheme} from "@/constants/constants";
 
 

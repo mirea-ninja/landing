@@ -1,3 +1,4 @@
+export const appName = "Mirea Ninja";
 export const darkTheme = "night";
 export const lightTheme = "corporate";
 export const CMSProjectGroupsUrl = "https://cms.mirea.ninja/api/landing-project-groups?populate[projectCards][populate]=*";

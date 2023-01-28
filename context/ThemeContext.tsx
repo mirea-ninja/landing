@@ -1,5 +1,5 @@
 import React from "react";
-import {getSystemTheme} from "@/utils/get-system-theme";
+import {getSystemTheme} from "@/utils/getSystemTheme";
 import {lightTheme} from "@/constants/constants";
 
 export const ThemeContext = React.createContext({
