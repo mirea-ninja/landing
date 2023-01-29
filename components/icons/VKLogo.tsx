@@ -1,4 +1,6 @@
-export default function VKLogo(props: { className?: string }) {
+import LogoProps from "@/components/icons/LogoProps";
+
+export default function VKLogo(props: LogoProps) {
     return (
         <svg viewBox="0 0 48 48" fill="currentColor" className={props.className} xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd"

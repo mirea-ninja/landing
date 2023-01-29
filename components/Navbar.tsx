@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import GithubMark from "@/components/icons/GithubMark";
+import GitHubLogo from "@/components/icons/GitHubLogo";
 import VKLogo from "@/components/icons/VKLogo";
 import ThemeCheckbox from "@/components/ThemeCheckbox";
 import {appName, GitHubLink, TelegramLink, VKLink} from "@/constants/constants";
@@ -12,7 +12,7 @@ const iconSize = "w-7 h-7";
 const links: { link: string, icon: JSX.Element }[] = [
     {link: VKLink, icon: <VKLogo className={iconSize}/>},
     {link: TelegramLink, icon: <TelegramLogo className={iconSize}/>},
-    {link: GitHubLink, icon: <GithubMark className={iconSize}/>},
+    {link: GitHubLink, icon: <GitHubLogo className={iconSize}/>},
 ]
 
 export default function Navbar() {

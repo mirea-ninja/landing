@@ -1,4 +1,6 @@
-export default function GithubMark(props: { className?: string }) {
+import LogoProps from "@/components/icons/LogoProps";
+
+export default function GitHubLogo(props: LogoProps) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 96" className={props.className} fill="currentColor">
             <path fillRule="evenodd"

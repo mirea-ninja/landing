@@ -1,5 +1,8 @@
 import Avatar from "@/components/Avatar";
 import ProjectLinkBadge, {ProjectLinkBadgeProps} from "@/components/ProjectLinkBadge";
+import {InformationCircleIcon} from "@heroicons/react/24/outline";
+import Link from "next/link";
+import React from "react";
 
 enum BadgeColors {
     primary = "badge-primary",
@@ -46,8 +49,28 @@ export default function ProjectCard(props: ProjectCardProps) {
                         ))}
                     </div>
                 </div>
-                <h3 className="text-sm font-bold mb-2">{props.title}</h3>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">{props.description}</p>
+                <div className="flex items-center mb-2">
+                    <h3 className="text-sm font-bold pr-1">{props.title}</h3>
+                    {props.authors.length > 0 &&
+                        <div className="dropdown dropdown-hover dropdown-top">
+                            <InformationCircleIcon tabIndex={0}
+                                                   className="btn btn-ghost btn-xs btn-circle align-middle"/>
+                            <div
+                                className="dropdown-content p-2 shadow bg-base-100 rounded-box w-52 border border-secondary text-slate-500 dark:text-slate-400">
+                                {props.authors.length == 1 ? "Автор: " : "Авторы: "}
+                                {props.authors?.map((author, index) => {
+                                    return (
+                                        <React.Fragment key={index}>
+                                            <Link key={index} className="underline text-accent"
+                                                  href={author.githubLink}>{author.name}</Link>
+                                            {props.authors.length != 1 && props.authors.length - 1 != index && ", "}
+                                        </React.Fragment>
+                                    )
+                                })}
+                            </div>
+                        </div>}
+                </div>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{props.description}</p>
                 {props.links.length !== 0 &&
                     <div className="flex">
                         {props.links.map((link, index) =>

@@ -1,4 +1,6 @@
-export default function TelegramLogo(props: { className?: string }) {
+import LogoProps from "@/components/icons/LogoProps";
+
+export default function TelegramLogo(props: LogoProps) {
     return (
         <svg className={props.className} viewBox="0 0 1000 1000" version="1.1" fill="currentColor"
              xmlns="http://www.w3.org/2000/svg">
