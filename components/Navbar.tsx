@@ -5,7 +5,6 @@ import VKLogo from "@/components/icons/VKLogo";
 import ThemeCheckbox from "@/components/ThemeCheckbox";
 import {appName, GitHubLink, TelegramLink, VKLink} from "@/constants/constants";
 import TelegramLogo from "@/components/icons/TelegramLogo";
-import GooglePlayLogo from "@/components/icons/GooglePlayLogo";
 
 const iconSize = "w-7 h-7";
 

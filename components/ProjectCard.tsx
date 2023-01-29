@@ -52,7 +52,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                 <div className="flex items-center mb-2">
                     <h3 className="text-sm font-bold pr-1">{props.title}</h3>
                     {props.authors.length > 0 &&
-                        <div className="dropdown dropdown-hover dropdown-top">
+                        <div className={`dropdown dropdown-hover dropdown-top ${props.title.length > 20 && "dropdown-end md:dropdown-start"}`}>
                             <InformationCircleIcon tabIndex={0}
                                                    className="btn btn-ghost btn-xs btn-circle align-middle"/>
                             <div
