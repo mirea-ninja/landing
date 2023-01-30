@@ -1,4 +1,4 @@
-# Mirea Ninja Landing
+# Mirea Ninja: Navigator
 
 ## Getting Started
 

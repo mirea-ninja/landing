@@ -3,8 +3,10 @@ import React from "react";
 import GitHubLogo from "@/components/icons/GitHubLogo";
 import VKLogo from "@/components/icons/VKLogo";
 import ThemeCheckbox from "@/components/ThemeCheckbox";
-import {appName, GitHubLink, TelegramLink, VKLink} from "@/constants/constants";
+import {appName, GitHubLink, shortAppName, TelegramLink, VKLink} from "@/constants/constants";
 import TelegramLogo from "@/components/icons/TelegramLogo";
+import Image from "next/image";
+import MNNavigator from "@/components/icons/MNNavigator";
 
 const iconSize = "w-7 h-7";
 
@@ -19,7 +21,11 @@ export default function Navbar() {
     return (
         <div className="navbar bg-base-200 shadow-md rounded-md">
             <div className="navbar-start">
-                <Link href="/" className="btn btn-ghost normal-case text-xl">{appName}</Link>
+                <Link href="/" className="btn btn-ghost normal-case text-xl content-center">
+                    <MNNavigator className="w-12 h-12 pr-1"/>
+                    <div className="visible md:invisible md:w-0 md:h-0">{shortAppName}</div>
+                    <div className="invisible w-0 h-0 md:visible md:w-fit md:h-fit">{appName}</div>
+                </Link>
             </div>
             <div className="navbar-center"/>
             <div className="navbar-end">
