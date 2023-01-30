@@ -1,109 +1,87 @@
+import Avatar from "@/components/Avatar";
+import ProjectLinkBadge, {ProjectLinkBadgeProps} from "@/components/ProjectLinkBadge";
+import {InformationCircleIcon} from "@heroicons/react/24/outline";
 import Link from "next/link";
-import Image from "next/image";
+import React from "react";
 
-
-const avatarClassSize = "w-16 h-16"
-const avatarClass = `${avatarClassSize} rounded-xl ring-1 group-hover:ring-2 duration-200 ring-secondary`
-
-
-function PlaceholderAvatar(props: { title: string }) {
-    const letters = props.title.split(" ")
-    const firstLetter = letters[0] ? letters[0][0] : null
-    const secondLetter = letters[1] ? letters[1][0] : null
-
-    return (
-        <div className={`avatar placeholder ${avatarClass}`}>
-            <div className={`${avatarClassSize} bg-local bg-accent group-hover:bg-accent-focus duration-200`}>
-                <span className="text-xl font-bold text-access-content">{firstLetter}{secondLetter}</span>
-            </div>
-        </div>
-    )
+enum BadgeColors {
+    primary = "badge-primary",
+    secondary = "badge-secondary",
+    accent = "badge-accent",
+    neutral = ""
 }
 
-function Avatar(props: { title: string, icon: string }) {
-    return (
-        <div className={avatarClass}>
-            <Image
-                src={props.icon}
-                width={64}
-                height={64}
-                alt={`Логотип проекта ${props.title}`}
-                className="bg-white"
-            />
-        </div>
-    )
+interface Badge {
+    text: string
+    color: "primary" | "secondary" | "accent" | "neutral"
 }
 
-function StoreBadge(props: { link: string, market: "app-store" | "google-play" }) {
-    let src = ""
-    let alt = ""
-    if (props.market === "app-store") {
-        src = "static/market-badges/app-store-badge-ru.svg"
-        alt = "Скачать в App Store"
-    } else if (props.market === "google-play") {
-        src = "static/market-badges/google-play-badge-ru.svg"
-        alt = "Скачать Google Play"
-    }
-
-    return (
-        <Link href={props.link} target="_blank">
-            <Image src={src} alt={alt} width={120} height={40}/>
-        </Link>
-    )
+interface Image {
+    data: { attributes: { url: string, formats: { medium: { url: string } } } } | null
 }
 
-interface ProjectCardBodyProps {
+interface Author {
+    name: string
+    githubLink: string
+    image: Image | null
+}
+
+export interface ProjectCardProps {
     title: string
     description: string
-    icon?: string
-    googlePlayLink?: string
-    appStoreLink?: string
-    badges?: { text: string, className: string }[]
-}
-
-export interface ProjectCardProps extends ProjectCardBodyProps {
-    link?: string
-}
-
-function ProjectCardBody(props: ProjectCardBodyProps) {
-    return (
-        <div className="card-body primary-content">
-            <div className="flex mb-4">
-                <div className="avatar">
-                    {props.icon !== undefined ?
-                        <Avatar title={props.title} icon={props.icon}/> : <PlaceholderAvatar title={props.title}/>}
-                </div>
-                <div className="flex flex-col ml-4 items-center">
-                    {props.badges?.map((badge, index) => (
-                        <div key={index}
-                             className={`badge ${badge.className ? badge.className : "badge-primary"} self-center ml-1 mb-1 whitespace-nowrap`}>{badge.text}</div>
-                    ))}
-                </div>
-            </div>
-            <h3 className="text-sm font-bold mb-2">{props.title}</h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">{props.description}</p>
-            <div className="grid grid-cols-2 gap-1 mt-4 place-items-center">
-                {props.appStoreLink !== undefined && <StoreBadge market="app-store" link={props.appStoreLink}/>}
-                {props.googlePlayLink !== undefined && <StoreBadge market="google-play" link={props.googlePlayLink}/>}
-            </div>
-        </div>
-    )
+    icon: Image | null
+    authors: Author[]
+    badges: Badge[]
+    links: ProjectLinkBadgeProps[]
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
-    const projectCardClassName = "card group ring-1 ring-primary hover:ring-2 hover:ring-primary-focus duration-200 min-h-[240px]"
-    if (props.link) {
-        return (
-            <Link href={props.link} target="_blank" className={projectCardClassName}>
-                <ProjectCardBody {...props}/>
-            </Link>
-        )
-    } else {
-        return (
-            <div
-                className={projectCardClassName}>
-                <ProjectCardBody {...props}/>
+    return (
+        <div
+            className="card group ring-1 ring-primary hover:ring-2 hover:ring-primary-focus duration-200 min-h-[240px]">
+            <div className="card-body primary-content">
+                <div className="flex mb-4">
+                    <div className="avatar">
+                        {props.icon !== undefined && props.icon !== null && props.icon.data !== null ?
+                            <Avatar title={props.title} icon={props.icon.data.attributes.formats?.medium?.url || props.icon.data.attributes.url}/> :
+                            <Avatar title={props.title}/>}
+                    </div>
+                    <div className="flex flex-col ml-4 items-center">
+                        {props.badges?.map((badge, index) => (
+                            <div key={index}
+                                 className={`badge ${BadgeColors[badge.color]} self-start ml-1 mb-1 whitespace-nowrap`}>{badge.text}</div>
+                        ))}
+                    </div>
+                </div>
+                <div className="flex items-center mb-2">
+                    <h3 className="text-sm font-bold pr-1">{props.title}</h3>
+                    {props.authors.length > 0 &&
+                        <div
+                            className={`dropdown dropdown-hover dropdown-top ${props.title.length > 20 && "dropdown-end md:dropdown-start"}`}>
+                            <InformationCircleIcon tabIndex={0}
+                                                   className="btn btn-ghost btn-xs btn-circle align-middle"/>
+                            <div
+                                className="dropdown-content p-2 shadow bg-base-100 rounded-box w-52 border border-secondary text-slate-500 dark:text-slate-400">
+                                {props.authors.length == 1 ? "Автор: " : "Авторы: "}
+                                {props.authors?.map((author, index) => {
+                                    return (
+                                        <React.Fragment key={index}>
+                                            <Link key={index} target="_blank" className="underline text-accent"
+                                                  href={author.githubLink}>{author.name}</Link>
+                                            {props.authors.length != 1 && props.authors.length - 1 != index && ", "}
+                                        </React.Fragment>
+                                    )
+                                })}
+                            </div>
+                        </div>}
+                </div>
+                <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">{props.description}</p>
+                {props.links.length !== 0 &&
+                    <div className="flex">
+                        {props.links.map((link, index) =>
+                            <ProjectLinkBadge key={index} website={link.website} link={link.link}/>)}
+                    </div>}
             </div>
-        )
-    }
+        </div>
+    )
 }
