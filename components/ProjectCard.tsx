@@ -16,16 +16,20 @@ interface Badge {
     color: "primary" | "secondary" | "accent" | "neutral"
 }
 
+interface Image {
+    data: { attributes: { url: string, formats: { medium: { url: string } } } } | null
+}
+
 interface Author {
     name: string
     githubLink: string
-    image: { data: { attributes: { url: string } } | null } | null
+    image: Image | null
 }
 
 export interface ProjectCardProps {
     title: string
     description: string
-    icon: { data: { attributes: { url: string } } | null } | null
+    icon: Image | null
     authors: Author[]
     badges: Badge[]
     links: ProjectLinkBadgeProps[]
@@ -39,7 +43,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                 <div className="flex mb-4">
                     <div className="avatar">
                         {props.icon !== undefined && props.icon !== null && props.icon.data !== null ?
-                            <Avatar title={props.title} icon={props.icon.data.attributes.url}/> :
+                            <Avatar title={props.title} icon={props.icon.data.attributes.formats?.medium?.url || props.icon.data.attributes.url}/> :
                             <Avatar title={props.title}/>}
                     </div>
                     <div className="flex flex-col ml-4 items-center">
@@ -52,7 +56,8 @@ export default function ProjectCard(props: ProjectCardProps) {
                 <div className="flex items-center mb-2">
                     <h3 className="text-sm font-bold pr-1">{props.title}</h3>
                     {props.authors.length > 0 &&
-                        <div className={`dropdown dropdown-hover dropdown-top ${props.title.length > 20 && "dropdown-end md:dropdown-start"}`}>
+                        <div
+                            className={`dropdown dropdown-hover dropdown-top ${props.title.length > 20 && "dropdown-end md:dropdown-start"}`}>
                             <InformationCircleIcon tabIndex={0}
                                                    className="btn btn-ghost btn-xs btn-circle align-middle"/>
                             <div

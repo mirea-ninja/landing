@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["cdn.cms.mirea.ninja"],
-    // unoptimized: true,
+    unoptimized: true,
   },
 }
 
