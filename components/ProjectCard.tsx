@@ -67,7 +67,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                                 {props.authors?.map((author, index) => {
                                     return (
                                         <React.Fragment key={index}>
-                                            <Link key={index} target="_blank" className="underline text-accent"
+                                            <Link key={index} target="_blank" className="hover:underline text-accent"
                                                   href={author.githubLink}>{author.name}</Link>
                                             {props.authors.length != 1 && props.authors.length - 1 != index && ", "}
                                         </React.Fragment>

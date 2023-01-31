@@ -10,31 +10,40 @@ import DiscordLogo from "@/components/icons/DiscordLogo";
 import RTUMIREALogo from "@/components/icons/RTUMIREALogo";
 import MireaNinjaForumLogo from "@/components/icons/MireaNinjaForumLogo";
 
+enum Website {
+    TELEGRAM = "Telegram",
+    VK = "VK",
+    DISCORD = "Discord",
+    GOOGLE_PLAY = "GooglePlay",
+    APPSTORE = "AppStore",
+    GITHUB = "GitHub",
+    SWAGGER = "Swagger",
+    RTU_MIREA = "RTU MIREA",
+    MIREA_NINJA_FORUM = "Mirea Ninja Forum",
+    ANOTHER_SITE = "Another site"
+}
+
 export interface ProjectLinkBadgeProps {
-    website: "Telegram" | "VK" | "Discord" | "GooglePlay" | "AppStore" |
-        "GitHub" | "Swagger" | "RTU MIREA" | "Mirea Ninja Forum" | "Another site"
+    website: Website,
     link: string
 }
 
-const websites = ["Telegram", "VK", "Discord", "GooglePlay", "AppStore",
-    "GitHub", "Swagger", "RTU MIREA", "Mirea Ninja Forum", "Another site"]
-
 export default function ProjectCardLinkBadge(props: ProjectLinkBadgeProps) {
-    if (websites.includes(props.website)) {
+    if (Object.values(Website).includes(props.website)) {
         return (
             <Link href={props.link} target="_blank"
                   className="pl-1 text-slate-500 dark:text-slate-400 hover:text-current">
                 <div className="w-7 h-7">
-                    {props.website === "Telegram" && <TelegramLogo/>}
-                    {props.website === "VK" && <VKLogo/>}
-                    {props.website === "Discord" && <DiscordLogo/>}
-                    {props.website === "GooglePlay" && <GooglePlayLogo/>}
-                    {props.website === "AppStore" && <AppStoreLogo/>}
-                    {props.website === "GitHub" && <GitHubLogo/>}
-                    {props.website === "Swagger" && <SwaggerLogo/>}
-                    {props.website === "RTU MIREA" && <RTUMIREALogo/>}
-                    {props.website === "Mirea Ninja Forum" && <MireaNinjaForumLogo/>}
-                    {props.website === "Another site" && <LinkIcon/>}
+                    {props.website === Website.TELEGRAM && <TelegramLogo/>}
+                    {props.website === Website.VK && <VKLogo/>}
+                    {props.website === Website.DISCORD && <DiscordLogo/>}
+                    {props.website === Website.GOOGLE_PLAY && <GooglePlayLogo/>}
+                    {props.website === Website.APPSTORE && <AppStoreLogo/>}
+                    {props.website === Website.GITHUB && <GitHubLogo/>}
+                    {props.website === Website.SWAGGER && <SwaggerLogo/>}
+                    {props.website === Website.RTU_MIREA && <RTUMIREALogo/>}
+                    {props.website === Website.MIREA_NINJA_FORUM && <MireaNinjaForumLogo/>}
+                    {props.website === Website.ANOTHER_SITE && <LinkIcon/>}
                 </div>
             </Link>
         )
