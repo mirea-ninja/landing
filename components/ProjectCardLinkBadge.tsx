@@ -32,7 +32,7 @@ export default function ProjectCardLinkBadge(props: ProjectLinkBadgeProps) {
     if (Object.values(Website).includes(props.website)) {
         return (
             <Link href={props.link} target="_blank"
-                  className="pl-1 text-slate-500 dark:text-slate-400 hover:text-current">
+                  className="pl-1 text-slate-500 dark:text-slate-400 hover:text-current transition duration-200">
                 <div className="w-7 h-7">
                     {props.website === Website.TELEGRAM && <TelegramLogo/>}
                     {props.website === Website.VK && <VKLogo/>}

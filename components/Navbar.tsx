@@ -8,7 +8,7 @@ import NavbarLinks from "@/components/NavbarLinks";
 export default function Navbar() {
 
     return (
-        <div className="navbar bg-base-200 shadow-md rounded-md">
+        <div className="navbar bg-base-200 shadow-md rounded-box">
             <div className="navbar-start">
                 <Link href="/" className="btn btn-ghost normal-case text-xl content-center">
                     <MNNavigator className="w-12 h-12 pr-1"/>
