@@ -19,10 +19,11 @@ export interface ProjectLinkBadgeProps {
 const websites = ["Telegram", "VK", "Discord", "GooglePlay", "AppStore",
     "GitHub", "Swagger", "RTU MIREA", "Mirea Ninja Forum", "Another site"]
 
-export default function ProjectLinkBadge(props: ProjectLinkBadgeProps) {
+export default function ProjectCardLinkBadge(props: ProjectLinkBadgeProps) {
     if (websites.includes(props.website)) {
         return (
-            <Link href={props.link} target="_blank" className="pl-1 text-slate-500 dark:text-slate-400 hover:text-current">
+            <Link href={props.link} target="_blank"
+                  className="pl-1 text-slate-500 dark:text-slate-400 hover:text-current">
                 <div className="w-7 h-7">
                     {props.website === "Telegram" && <TelegramLogo/>}
                     {props.website === "VK" && <VKLogo/>}
