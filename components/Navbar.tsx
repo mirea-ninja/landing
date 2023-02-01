@@ -8,7 +8,7 @@ import NavbarLinks from "@/components/NavbarLinks";
 export default function Navbar() {
 
     return (
-        <div className="navbar bg-base-200 shadow-md rounded-box">
+        <nav className="navbar fixed top-0 left-0 right-0 backdrop-filter backdrop-blur-xl bg-opacity-30 border-b border-base-200">
             <div className="navbar-start">
                 <Link href="/" className="btn btn-ghost normal-case text-xl content-center">
                     <MNNavigator className="w-12 h-12 pr-1"/>
@@ -21,6 +21,6 @@ export default function Navbar() {
                 <ThemeCheckbox iconSize={navbarIconSizeClassName}/>
                 <NavbarLinks/>
             </div>
-        </div>
+        </nav>
     )
 }
