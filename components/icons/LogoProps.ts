@@ -1,3 +1,3 @@
 export default interface LogoProps {
-    className?: string
+  className?: string;
 }
