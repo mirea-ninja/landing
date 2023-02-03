@@ -1,7 +1,6 @@
 import {useTheme} from "@/context/ThemeContext";
 import {MoonIcon, SunIcon} from "@heroicons/react/24/outline";
 import React, {useEffect} from "react";
-import {getSystemTheme} from "@/utils/getSystemTheme";
 import {darkTheme, lightTheme} from "@/constants/constants";
 
 
@@ -20,11 +19,6 @@ export default function ThemeCheckbox(props: ThemeCheckboxProps) {
             checkboxRef.current.checked = theme === darkTheme;
         }
     }, [theme])
-
-    useEffect(() => {
-        toggleTheme(getSystemTheme())
-    }, [getSystemTheme])
-
 
     return (
         <label className="btn btn-square btn-ghost swap swap-rotate">

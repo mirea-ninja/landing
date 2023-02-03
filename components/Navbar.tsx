@@ -1,25 +1,14 @@
 import Link from "next/link";
 import React from "react";
-import GitHubLogo from "@/components/icons/GitHubLogo";
-import VKLogo from "@/components/icons/VKLogo";
 import ThemeCheckbox from "@/components/ThemeCheckbox";
-import {appName, GitHubLink, shortAppName, TelegramLink, VKLink} from "@/constants/constants";
-import TelegramLogo from "@/components/icons/TelegramLogo";
-import Image from "next/image";
+import {appName, navbarIconSizeClassName, shortAppName} from "@/constants/constants";
 import MNNavigator from "@/components/icons/MNNavigator";
-
-const iconSize = "w-7 h-7";
-
-const links: { link: string, icon: JSX.Element }[] = [
-    {link: VKLink, icon: <VKLogo className={iconSize}/>},
-    {link: TelegramLink, icon: <TelegramLogo className={iconSize}/>},
-    {link: GitHubLink, icon: <GitHubLogo className={iconSize}/>},
-]
+import NavbarLinks from "@/components/NavbarLinks";
 
 export default function Navbar() {
 
     return (
-        <div className="navbar bg-base-200 shadow-md rounded-md">
+        <nav className="navbar fixed top-0 left-0 right-0 backdrop-filter backdrop-blur-xl bg-opacity-30 border-b border-base-200">
             <div className="navbar-start">
                 <Link href="/" className="btn btn-ghost normal-case text-xl content-center">
                     <MNNavigator className="w-12 h-12 pr-1"/>
@@ -29,17 +18,9 @@ export default function Navbar() {
             </div>
             <div className="navbar-center"/>
             <div className="navbar-end">
-                <ThemeCheckbox iconSize={iconSize}/>
-                {links.map(({link, icon}, index) => {
-                    return (
-                        <Link href={link} key={index}
-                              target="_blank"
-                              className="btn btn-square btn-ghost">
-                            {icon}
-                        </Link>
-                    )
-                })}
+                <ThemeCheckbox iconSize={navbarIconSizeClassName}/>
+                <NavbarLinks/>
             </div>
-        </div>
+        </nav>
     )
 }

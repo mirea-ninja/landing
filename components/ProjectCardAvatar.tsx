@@ -4,12 +4,12 @@ import Image from "next/image";
 const avatarClassSize = "w-16 h-16"
 const avatarClass = `${avatarClassSize} rounded-xl ring-1 group-hover:ring-2 duration-200 ring-secondary`
 
-interface AvatarProps {
+interface ProjectCardAvatarProps {
     title: string
     icon?: string
 }
 
-export default function Avatar(props: { title: string, icon?: string }) {
+export default function ProjectCardAvatar(props: ProjectCardAvatarProps) {
     if (props.icon) {
         return (
             <div className={avatarClass}>

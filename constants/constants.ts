@@ -6,3 +6,4 @@ export const CMSProjectGroupsUrl = "https://cms.mirea.ninja/api/landing-project-
 export const VKLink = "https://vk.com/mirea.ninja";
 export const TelegramLink = "https://t.me/mirea_ninja_chat";
 export const GitHubLink = "https://github.com/mirea-ninja";
+export const navbarIconSizeClassName = "w-7 h-7";

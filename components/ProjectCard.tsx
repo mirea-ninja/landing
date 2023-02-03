@@ -1,5 +1,5 @@
-import Avatar from "@/components/Avatar";
-import ProjectLinkBadge, {ProjectLinkBadgeProps} from "@/components/ProjectLinkBadge";
+import ProjectCardAvatar from "@/components/ProjectCardAvatar";
+import ProjectCardLinkBadge, {ProjectLinkBadgeProps} from "@/components/ProjectCardLinkBadge";
 import {InformationCircleIcon} from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React from "react";
@@ -43,8 +43,9 @@ export default function ProjectCard(props: ProjectCardProps) {
                 <div className="flex mb-4">
                     <div className="avatar">
                         {props.icon !== undefined && props.icon !== null && props.icon.data !== null ?
-                            <Avatar title={props.title} icon={props.icon.data.attributes.formats?.medium?.url || props.icon.data.attributes.url}/> :
-                            <Avatar title={props.title}/>}
+                            <ProjectCardAvatar title={props.title}
+                                               icon={props.icon.data.attributes.formats?.medium?.url || props.icon.data.attributes.url}/> :
+                            <ProjectCardAvatar title={props.title}/>}
                     </div>
                     <div className="flex flex-col ml-4 items-center">
                         {props.badges?.map((badge, index) => (
@@ -66,7 +67,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                                 {props.authors?.map((author, index) => {
                                     return (
                                         <React.Fragment key={index}>
-                                            <Link key={index} target="_blank" className="underline text-accent"
+                                            <Link key={index} target="_blank" className="hover:underline text-accent"
                                                   href={author.githubLink}>{author.name}</Link>
                                             {props.authors.length != 1 && props.authors.length - 1 != index && ", "}
                                         </React.Fragment>
@@ -79,7 +80,7 @@ export default function ProjectCard(props: ProjectCardProps) {
                 {props.links.length !== 0 &&
                     <div className="flex">
                         {props.links.map((link, index) =>
-                            <ProjectLinkBadge key={index} website={link.website} link={link.link}/>)}
+                            <ProjectCardLinkBadge key={index} website={link.website} link={link.link}/>)}
                     </div>}
             </div>
         </div>
