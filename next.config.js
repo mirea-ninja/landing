@@ -3,7 +3,7 @@ const nextConfig = {
   assetPrefix: '.',
   reactStrictMode: true,
   images: {
-    domains: ["cdn.cms.mirea.ninja"],
+    domains: ['cdn.cms.mirea.ninja'],
     unoptimized: true,
   },
 }
