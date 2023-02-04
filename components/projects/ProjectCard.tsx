@@ -1,5 +1,5 @@
-import ProjectCardAvatar from '@/components/ProjectCardAvatar'
-import ProjectCardLinkBadge, { ProjectLinkBadgeProps } from '@/components/ProjectCardLinkBadge'
+import ProjectCardAvatar from '@/components/projects/ProjectCardAvatar'
+import ProjectCardLinkBadge, { ProjectLinkBadgeProps } from '@/components/projects/ProjectCardLinkBadge'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import React from 'react'

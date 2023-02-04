@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout'
-import ProjectGrid, { ProjectGridProps } from '@/components/ProjectGrid'
+import ProjectGrid, { ProjectGridProps } from '@/components/projects/ProjectGrid'
 import React from 'react'
 import { CMSProjectGroupsUrl } from '@/constants/constants'
 

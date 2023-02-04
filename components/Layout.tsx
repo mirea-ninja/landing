@@ -22,7 +22,7 @@ export default function Layout(props: LayoutProps) {
         />
         <link rel='icon' href='/static/favicon.ico' />
       </Head>
-      <main className='relative mx-auto px-4 sm:px-6 lg:px-8 pb-8 max-w-7xl'>
+      <main className='relative mx-auto px-4 sm:px-6 lg:px-8 pt-16 max-w-7xl'>
         {props.children}
         <Navbar />
       </main>
