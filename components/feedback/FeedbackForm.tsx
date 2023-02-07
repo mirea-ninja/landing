@@ -1,47 +1,53 @@
-import React, { useRef } from 'react'
-import { maxFeedbackContactLength, maxFeedbackTextLength } from '@/constants/constants'
+import React, { useEffect, useRef, useState } from 'react'
+import { feedbackURL, maxFeedbackContactLength, maxFeedbackTextLength } from '@/constants/constants'
 
 interface FeedbackFormProps {
   projects: string[]
 }
 
-interface FeedbackRequestBody {
-  service: string
-  text: string
-  contact: string
-}
-
 export default function FeedbackForm(props: FeedbackFormProps) {
-  const projectSelector = useRef(null)
-  const feedbackInput = useRef(null)
-  const contactInput = useRef(null)
+  const [project, setProject] = useState('DEFAULT')
+  const [text, setText] = useState('')
+  const [contact, setContact] = useState('')
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault()
-    const requestBody: FeedbackRequestBody = {
-      // @ts-ignore
-      service: projectSelector.current?.value || '',
-      // @ts-ignore
-      text: feedbackInput.current?.value || '',
-      // @ts-ignore
-      contact: contactInput.current?.value || '',
+    const requestBody = { project, text, contact }
+
+    const jsonBody = JSON.stringify(requestBody)
+    const response = await fetch('api/feedback', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': jsonBody.length.toString(),
+      },
+      body: jsonBody,
+    })
+
+    const data = await response.json()
+
+    if (data.message) {
+      alert(data.message)
+    } else {
+      alert('Ошибка отправки')
     }
-    console.log(requestBody)
+    if (response.status == 200) {
+      setProject('DEFAULT')
+      setText('')
+      setContact('')
+    }
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className='-mt-16 flex flex-col items-start justify-center m-auto w-full md:w-1/2 h-screen'
-    >
+    <div className='-mt-16 flex flex-col items-start justify-center m-auto w-full md:w-1/2 h-screen'>
       <h1 className='text-2xl font-bold text-start'>Отзывы и предложения</h1>
       <span className='mt-4'>
         Здесь Вы можете оставить отзыв о проектах Mirea Ninja или предложение по их улучшению.
       </span>
       <select
-        ref={projectSelector}
+        onChange={(event) => setProject(event.target.value)}
+        value={project}
         className='select select-bordered w-full mt-4'
-        defaultValue='DEFAULT'
         required
       >
         <option key={-1} value='DEFAULT' disabled>
@@ -55,11 +61,14 @@ export default function FeedbackForm(props: FeedbackFormProps) {
       </select>
       <div className='form-control w-full mt-4'>
         <label className='label'>
-          <span className='label-text'>Сообщение</span>
-          <span className='label-text-alt'>Макс. длина {maxFeedbackTextLength} симв.</span>
+          <span className='label-text'>
+            Сообщение<span className='text-red'>*</span>
+          </span>
+          <span className='label-text-alt'>max длина {maxFeedbackTextLength} симв.</span>
         </label>
         <textarea
-          ref={feedbackInput}
+          onChange={(event) => setText(event.target.value)}
+          value={text}
           placeholder='Во время использования сервиса возникли проблемы...'
           className='textarea textarea-bordered textarea-lg h-32'
           maxLength={maxFeedbackTextLength}
@@ -69,18 +78,20 @@ export default function FeedbackForm(props: FeedbackFormProps) {
       <div className='form-control w-full mt-4'>
         <label className='label'>
           <span className='label-text'>Контакты</span>
+          <span className='label-text-alt'>max длина {maxFeedbackContactLength} симв.</span>
         </label>
         <input
-          ref={contactInput}
+          onChange={(event) => setContact(event.target.value)}
+          value={contact}
           type='text'
           placeholder='t.me/username, email'
           className='input input-bordered input-md'
           maxLength={maxFeedbackContactLength}
         />
       </div>
-      <button type='submit' className='btn btn-accent mt-4'>
+      <button onClick={onClick} className='btn btn-accent mt-4'>
         Отправить
       </button>
-    </form>
+    </div>
   )
 }
