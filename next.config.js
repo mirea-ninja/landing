@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: '.',
-  reactStrictMode: true,
-  output: 'standalone',
+  ...(process.env.NODE_ENV === 'production' && {
+    assetPrefix: '.',
+    reactStrictMode: true,
+    output: 'standalone',
+  }),
   images: {
     domains: ['cdn.cms.mirea.ninja'],
     unoptimized: true,
