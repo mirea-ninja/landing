@@ -1,6 +1,6 @@
 export const appName = 'Mirea Ninja: Navigator'
 export const shortAppName = 'Navigator'
-export const appDescription = 'Приложение для студентов МИРЭА'
+export const appDescription = 'Приложения для студентов МИРЭА'
 export const darkTheme = 'night'
 export const lightTheme = 'corporate'
 export const CMSProjectGroupsUrl =
