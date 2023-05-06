@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   ...(process.env.NODE_ENV === 'production' && {
     assetPrefix: '.',
     reactStrictMode: true,
