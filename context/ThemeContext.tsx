@@ -1,6 +1,8 @@
+"use client"
+
 import React, { useEffect } from 'react'
 import { darkTheme, lightTheme } from '@/constants/constants'
-import { getSystemTheme } from '@/utils/getSystemTheme'
+import { getSystemTheme } from '@/lib/getSystemTheme'
 
 export const ThemeContext = React.createContext({
   theme: lightTheme,
