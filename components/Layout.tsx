@@ -21,7 +21,7 @@ export default function Layout(props: LayoutProps) {
           property='og:image'
           content='https://cdn.cms.mirea.ninja/navigator_logo_3527455f8d.png'
         />
-        <link rel='icon' href='/static/favicon.ico' />
+        <link rel='icon' href='static/favicon.ico' />
       </Head>
       <main className='relative mx-auto px-4 sm:px-6 lg:px-8 pt-16 max-w-7xl'>
         {props.children}
