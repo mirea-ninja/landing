@@ -3,7 +3,6 @@
 Навигация по проектам Mirea Ninja
 
 ### Development
-
 ```bash
 npm run dev
 # or
